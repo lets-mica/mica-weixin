@@ -37,8 +37,8 @@ jfinal weixin 的 spring boot starter，这个starter是为了方便boot用户�
 2. 添加`@WxApi`注解
 
 ### 配置
-| 配置项 | 默认值 |
-| ----- | ------ |
+| 配置项 | 默认值 | 说明 |
+| ----- | ------ | ------ |
 | dream.weixin.access-token-cache | dreamWeixinCache | 缓存名，需要开启spring cache |
 | dream.weixin.app-id-key | appId | 对公众号参数名，如：/weixin/wx?appId=xxx |
 | dream.weixin.dev-mode | false | 开发模式 |
