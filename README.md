@@ -46,9 +46,8 @@ jfinal weixin 的 spring boot starter，这个starter是为了方便boot用户�
 | dream.weixin.wx-configs | 公众号的配置 | 多公众号配置 |
 | dream.weixin.wxa-config | 小程序配置 | 小程序配置 |
 
-`注意`：可参考demo中的[application.yml](spring-boot-weixin-demo/src/main/resources/application.yml)
-
 `注意`：
+- 可参考demo中的[application.yml](spring-boot-weixin-demo/src/main/resources/application.yml)
 - cache使用spring的cache，需要`@EnableCaching`开启。
 - `access-token-cache`建议配置有效时间7100秒。
 
