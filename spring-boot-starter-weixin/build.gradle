@@ -85,7 +85,7 @@ uploadArchives {
             pom.groupId = "$project.group"
 
             signing {
-                Sign archives
+                sign configurations.archives
             }
 
             beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
@@ -97,10 +97,10 @@ uploadArchives {
             }
 
             pom.project {
-                name 'LuTool'
+                name 'spring-boot-starter-weixin'
                 packaging 'jar'
-                description 'An enhanced toolkit of Spring boot to simplify development.'
-                url 'https://gitee.com/dreamlu/LuTool'
+                description 'A spring boot starter for JFinal weixin.'
+                url 'https://gitee.com/dreamlu/spring-boot-starter-weixin'
 
                 scm {
                     connection 'scm:git@gitee.com:/596392912/spring-boot-starter-weixin.git'

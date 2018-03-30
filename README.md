@@ -39,12 +39,14 @@ jfinal weixin 的 spring boot starter，这个starter是为了方便boot用户�
 ### 配置
 | 配置项 | 默认值 |
 | ----- | ------ |
-| dream.weixin.access-token-cache | dreamWeixinCache |
-| dream.weixin.app-id-key | appId |
-| dream.weixin.dev-mode | false |
-| dream.weixin.url-patterns | /weixin/* |
-| dream.weixin.wx-configs | 公众号的配置 |
-| dream.weixin.wxa-config | 小程序配置 |
+| dream.weixin.access-token-cache | dreamWeixinCache | 缓存名，需要开启spring cache |
+| dream.weixin.app-id-key | appId | 对公众号参数名，如：/weixin/wx?appId=xxx |
+| dream.weixin.dev-mode | false | 开发模式 |
+| dream.weixin.url-patterns | /weixin/* | JFinal-weixin 过滤器url前缀 |
+| dream.weixin.wx-configs | 公众号的配置 | 多公众号配置 |
+| dream.weixin.wxa-config | 小程序配置 | 小程序配置 |
+
+`注意`：可参考demo中的[application.yml](spring-boot-weixin-demo/src/main/resources/application.yml)
 
 `注意`：
 - cache使用spring的cache，需要`@EnableCaching`开启。
