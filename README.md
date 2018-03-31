@@ -1,7 +1,7 @@
 ## 说明
 jfinal weixin 的 spring boot starter，这个starter是为了方便boot用户使用。
 
-具体demo请查看：`spring-boot-weixin-demo`
+具体demo请查看：`spring-boot-weixin-demo` 和 [JFinal-weixin文档](https://gitee.com/jfinal/jfinal-weixin/wikis/pages?title=Home)
 
 ## Jar包依赖
 ```xml
@@ -40,7 +40,7 @@ jfinal weixin 的 spring boot starter，这个starter是为了方便boot用户�
 | 配置项 | 默认值 | 说明 |
 | ----- | ------ | ------ |
 | dream.weixin.access-token-cache | dreamWeixinCache | 缓存名，需要开启spring cache |
-| dream.weixin.app-id-key | appId | 对公众号参数名，如：/weixin/wx?appId=xxx |
+| dream.weixin.app-id-key | appId | 多公众号参数名，如：/weixin/wx?appId=xxx |
 | dream.weixin.dev-mode | false | 开发模式 |
 | dream.weixin.url-patterns | /weixin/* | JFinal-weixin 过滤器url前缀 |
 | dream.weixin.wx-configs | 公众号的配置 | 多公众号配置 |

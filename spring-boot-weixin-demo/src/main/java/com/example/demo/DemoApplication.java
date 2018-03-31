@@ -1,12 +1,12 @@
 package com.example.demo;
 
-import net.dreamlu.weixin.annotation.EnableWeixin;
+import net.dreamlu.weixin.annotation.EnableDreamWeixin;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
 
 @SpringBootApplication
-@EnableWeixin
+@EnableDreamWeixin
 @EnableCaching
 public class DemoApplication {
 
