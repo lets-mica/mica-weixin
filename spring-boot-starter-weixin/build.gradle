@@ -100,7 +100,7 @@ uploadArchives {
                 name 'spring-boot-starter-weixin'
                 packaging 'jar'
                 description 'A spring boot starter for JFinal weixin.'
-                url 'https://gitee.com/dreamlu/spring-boot-starter-weixin'
+                url 'https://gitee.com/596392912/spring-boot-starter-weixin'
 
                 scm {
                     connection 'scm:git@gitee.com:/596392912/spring-boot-starter-weixin.git'
