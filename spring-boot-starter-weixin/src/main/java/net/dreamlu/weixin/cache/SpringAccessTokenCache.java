@@ -18,11 +18,11 @@ public class SpringAccessTokenCache implements IAccessTokenCache {
 
 	@Override
 	public void set(String key, String jsonValue) {
-		cache.put(key, jsonValue);
+		cache.put(ACCESS_TOKEN_PREFIX + key, jsonValue);
 	}
 
 	@Override
 	public void remove(String key) {
-		cache.evict(key);
+		cache.evict(ACCESS_TOKEN_PREFIX + key);
 	}
 }

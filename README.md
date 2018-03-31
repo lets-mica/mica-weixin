@@ -8,7 +8,7 @@ jfinal weixin 的 spring boot starter，这个starter是为了方便boot用户�
 <dependency>
     <groupId>net.dreamlu</groupId>
     <artifactId>spring-boot-starter-weixin</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
 </dependency>
 ```
 
