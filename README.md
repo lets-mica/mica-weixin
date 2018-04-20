@@ -8,7 +8,7 @@ jfinal weixin 的 spring boot starter，这个starter是为了方便boot用户�
 <dependency>
     <groupId>net.dreamlu</groupId>
     <artifactId>spring-boot-starter-weixin</artifactId>
-    <version>1.1.0</version>
+    <version>1.2.0</version>
 </dependency>
 ```
 
@@ -47,7 +47,22 @@ jfinal weixin 的 spring boot starter，这个starter是为了方便boot用户�
 | dream.weixin.wxa-config | 小程序配置 | 小程序配置 |
 
 `注意`：
-- 可参考demo中的[application.yml](spring-boot-weixin-demo/src/main/resources/application.yml)
+- demo中的`application.yml`
+```yml
+dream:
+  weixin:
+    dev-mode: true
+    wx-configs:
+      - appId: wx9803d1188fa5fbda
+        appSecret: db859c968763c582794e7c3d003c3d87
+      - appId: wxc03edcd008ad1e70
+        appSecret: 11ed9e2b8e3e3c131e7be320a42b2b5a
+        token: 123456
+    wxa-config:
+      appid: wx4f53594f9a6b3dcb
+      appSecret: eec6482ba3804df05bd10895bace0579
+```
+
 - cache使用spring的cache，需要`@EnableCaching`开启。
 - `access-token-cache`建议配置有效时间7100秒。
 
@@ -56,13 +71,18 @@ jfinal weixin 的 spring boot starter，这个starter是为了方便boot用户�
  <img src="https://gitee.com/uploads/images/2018/0311/153556_679db579_372.jpeg" width="250px"/>
 
 ## VIP群
-捐助￥199即可加入如梦技术VIP，捐助后联系QQ: 596392912
+捐助~~￥199~~限时￥99，即可加入如梦技术VIP，捐助后联系QQ: 596392912
 
 #### VIP权益
 1. spring boot版安全框架（maven + spring boot + spring security + thymeleaf）
 
-2. 技术资料共享
+2. 技术资料共享，技术指导和技术路线规划。
 
 3. spring cloud脚手架（改造中）
 
 4. 更多私有Git资源，
+
+### spring boot版安全框架 Demo
+地址：http://demo.dreamlu.net
+
+账号vs密码：test、test

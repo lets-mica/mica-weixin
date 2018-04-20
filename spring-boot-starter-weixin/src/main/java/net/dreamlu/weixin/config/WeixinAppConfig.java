@@ -27,5 +27,8 @@ public class WeixinAppConfig implements InitializingBean {
 		WxaConfig wxaConfig = weixinProperties.getWxaConfig();
 		WxaConfigKit.setDevMode(isdev);
 		WxaConfigKit.setWxaConfig(wxaConfig);
+		if (WxaMsgParser.JSON == weixinProperties.getWxaMsgParser()) {
+			WxaConfigKit.useJsonMsgParser();
+		}
 	}
 }

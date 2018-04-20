@@ -26,7 +26,7 @@ public class WeixinController extends MsgControllerAdapter {
     protected void processInTextMsg(InTextMsg inTextMsg) {
         System.out.println(weixinProperties.getWxaConfig().getAppId());
         OutTextMsg outMsg = new OutTextMsg(inTextMsg);
-        outMsg.setContent("文本消息~");
+        outMsg.setContent(inTextMsg.getContent());
         render(outMsg);
     }
 
