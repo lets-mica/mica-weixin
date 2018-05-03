@@ -7,10 +7,11 @@ import com.jfinal.weixin.sdk.msg.in.event.InMenuEvent;
 import com.jfinal.weixin.sdk.msg.out.OutTextMsg;
 import net.dreamlu.weixin.annotation.WxMsgController;
 import net.dreamlu.weixin.properties.DreamWeixinProperties;
+import net.dreamlu.weixin.spring.DreamMsgControllerAdapter;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @WxMsgController("/weixin/wx")
-public class WeixinController extends MsgControllerAdapter {
+public class WeixinController extends DreamMsgControllerAdapter {
 
     @Autowired
     private DreamWeixinProperties weixinProperties;

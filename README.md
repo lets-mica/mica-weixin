@@ -8,33 +8,26 @@ jfinal weixin 的 spring boot starter，这个starter是为了方便boot用户�
 <dependency>
     <groupId>net.dreamlu</groupId>
     <artifactId>spring-boot-starter-weixin</artifactId>
-    <version>1.2.0</version>
+    <version>1.3.0</version>
 </dependency>
 ```
 
 `说明`：依赖`spring-boot-starter-aop`
 
 ## 使用
-### 启用微信
-```java
-@EnableDreamWeixin
-```
-
 ### 消息
 #### 公众号
-1. 继承`MsgControllerAdapter`，实现需要重写的消息。
+1. 继承`DreamMsgControllerAdapter`，实现需要重写的消息。
 
-2. 添加注解`@WxMsgController`，注解value为你的消息地址，使用/weixin/wx
+2. 类添加注解`@WxMsgController`，注解value为你的消息地址，使用/weixin/wx，已经组合[@RequestMapping和@Controller]
 
 ### 小程序
-1. 继承`WxaMsgController`，实现需要重写的消息。
+1. 继承`DreamWxaMsgController`，实现需要重写的消息。
 
-2. 添加注解`@WxMsgController`，注解value为你的消息地址，使用/weixin/wxa
+2. 添加注解`@WxMsgController`，注解value为你的消息地址，使用/weixin/wxa，已经组合[@RequestMapping和@Controller]
 
 ### Api
-1. 使用传统的spring的控制器即可
-
-2. 添加`@WxApi`注解
+- 类添加`@WxApi`注解，已经组合[@RequestMapping和@Controller]
 
 ### 配置
 | 配置项 | 默认值 | 说明 |
@@ -42,7 +35,7 @@ jfinal weixin 的 spring boot starter，这个starter是为了方便boot用户�
 | dream.weixin.access-token-cache | dreamWeixinCache | 缓存名，需要开启spring cache |
 | dream.weixin.app-id-key | appId | 多公众号参数名，如：/weixin/wx?appId=xxx |
 | dream.weixin.dev-mode | false | 开发模式 |
-| dream.weixin.url-patterns | /weixin/* | JFinal-weixin 过滤器url前缀 |
+| dream.weixin.url-patterns | /weixin/* | weixin 消息处理spring拦截器url前缀 |
 | dream.weixin.wx-configs | 公众号的配置 | 多公众号配置 |
 | dream.weixin.wxa-config | 小程序配置 | 小程序配置 |
 
@@ -65,6 +58,11 @@ dream:
 
 - cache使用spring的cache，需要`@EnableCaching`开启。
 - `access-token-cache`建议配置有效时间7100秒。
+
+## 更新说明
+>## 2018-05-03 v1.3.0
+> 弃用`@EnableDreamWeixin`，导入jar包即可享用。
+> 将消息路由改为spring接管。
 
 ## 捐助共勉
  <img src="https://gitee.com/uploads/images/2018/0311/153544_5afb12b1_372.jpeg" width="250px"/>
