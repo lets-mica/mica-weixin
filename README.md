@@ -12,8 +12,6 @@ jfinal weixin 的 spring boot starter，这个starter是为了方便boot用户�
 </dependency>
 ```
 
-`说明`：依赖`spring-boot-starter-aop`
-
 ## 使用
 ### 消息
 #### 公众号
@@ -27,7 +25,7 @@ jfinal weixin 的 spring boot starter，这个starter是为了方便boot用户�
 2. 添加注解`@WxMsgController`，注解value为你的消息地址，使用/weixin/wxa，已经组合[@RequestMapping和@Controller]
 
 ### Api
-- 类添加`@WxApi`注解，已经组合[@RequestMapping和@Controller]
+- 类添加`@WxApi`，注解value为你的消息地址，使用/weixin/api，已经组合[@RequestMapping和@Controller]
 
 ### 配置
 | 配置项 | 默认值 | 说明 |

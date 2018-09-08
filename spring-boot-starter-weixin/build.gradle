@@ -36,7 +36,6 @@ dependencies {
     compile "com.jfinal:jfinal:${jfinalVersion}"
     compile "com.jfinal:jfinal-weixin:${jfinalWeixinVersion}"
     provided "org.springframework.boot:spring-boot-starter-web"
-    provided "org.springframework.boot:spring-boot-starter-aop"
     optional "org.springframework.boot:spring-boot-configuration-processor"
     provided "org.projectlombok:lombok:${lombokVersion}"
     testCompile "org.springframework.boot:spring-boot-starter-test"

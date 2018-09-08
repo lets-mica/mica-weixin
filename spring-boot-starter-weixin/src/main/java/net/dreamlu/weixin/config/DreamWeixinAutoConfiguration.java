@@ -1,7 +1,6 @@
 package net.dreamlu.weixin.config;
 
 import lombok.AllArgsConstructor;
-import net.dreamlu.weixin.aspect.WxApiAspect;
 import net.dreamlu.weixin.cache.SpringAccessTokenCache;
 import net.dreamlu.weixin.properties.DreamWeixinProperties;
 import net.dreamlu.weixin.spring.MsgInterceptor;
@@ -23,11 +22,6 @@ public class DreamWeixinAutoConfiguration {
 	public SpringAccessTokenCache springAccessTokenCache(DreamWeixinProperties properties) {
 		Cache cache = cacheManager.getCache(properties.getAccessTokenCache());
 		return new SpringAccessTokenCache(cache);
-	}
-
-	@Bean
-	public WxApiAspect wxApiAspect(DreamWeixinProperties properties) {
-		return new WxApiAspect(properties);
 	}
 
 	@Configuration

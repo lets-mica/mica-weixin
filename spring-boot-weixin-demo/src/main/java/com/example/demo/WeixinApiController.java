@@ -6,7 +6,7 @@ import net.dreamlu.weixin.annotation.WxApi;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-@WxApi("api")
+@WxApi("/weixin/api")
 public class WeixinApiController {
 
     @GetMapping("menu")
