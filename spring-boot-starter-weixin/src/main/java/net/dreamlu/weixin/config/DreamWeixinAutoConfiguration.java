@@ -1,10 +1,11 @@
 package net.dreamlu.weixin.config;
 
+import lombok.AllArgsConstructor;
 import net.dreamlu.weixin.aspect.WxApiAspect;
 import net.dreamlu.weixin.cache.SpringAccessTokenCache;
 import net.dreamlu.weixin.properties.DreamWeixinProperties;
 import net.dreamlu.weixin.spring.MsgInterceptor;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
 import org.springframework.context.annotation.Bean;
@@ -13,34 +14,24 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @Configuration
-@EnableConfigurationProperties(DreamWeixinProperties.class)
+@AutoConfigureAfter(DreamWeixinProperties.class)
+@AllArgsConstructor
 public class DreamWeixinAutoConfiguration {
 	private final CacheManager cacheManager;
-	private final DreamWeixinProperties weixinProperties;
-
-	public DreamWeixinAutoConfiguration(CacheManager cacheManager, DreamWeixinProperties weixinProperties) {
-		this.cacheManager = cacheManager;
-		this.weixinProperties = weixinProperties;
-	}
 
 	@Bean
-	public WeixinAppConfig weixinAppConfig() {
-		return new WeixinAppConfig(weixinProperties);
-	}
-
-	@Bean
-	public SpringAccessTokenCache springAccessTokenCache() {
-		Cache cache = cacheManager.getCache(weixinProperties.getAccessTokenCache());
+	public SpringAccessTokenCache springAccessTokenCache(DreamWeixinProperties properties) {
+		Cache cache = cacheManager.getCache(properties.getAccessTokenCache());
 		return new SpringAccessTokenCache(cache);
 	}
 
 	@Bean
-	public WxApiAspect wxApiAspect() {
-		return new WxApiAspect(weixinProperties);
+	public WxApiAspect wxApiAspect(DreamWeixinProperties properties) {
+		return new WxApiAspect(properties);
 	}
 
 	@Configuration
-	public class MsgConfiguration extends WebMvcConfigurerAdapter {
+	public static class MsgConfiguration extends WebMvcConfigurerAdapter {
 		private final DreamWeixinProperties properties;
 
 		public MsgConfiguration(DreamWeixinProperties properties) {

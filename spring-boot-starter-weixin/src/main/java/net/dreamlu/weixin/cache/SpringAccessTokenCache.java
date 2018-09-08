@@ -1,15 +1,13 @@
 package net.dreamlu.weixin.cache;
 
 import com.jfinal.weixin.sdk.cache.IAccessTokenCache;
+import lombok.AllArgsConstructor;
 import org.springframework.cache.Cache;
 
+@AllArgsConstructor
 public class SpringAccessTokenCache implements IAccessTokenCache {
-	private final String ACCESS_TOKEN_PREFIX = "dream-weixin:token:";
+	private final static String ACCESS_TOKEN_PREFIX = "dream-weixin:token:";
 	private final Cache cache;
-
-	public SpringAccessTokenCache(Cache cache) {
-		this.cache = cache;
-	}
 
 	@Override
 	public String get(String key) {

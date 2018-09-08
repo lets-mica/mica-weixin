@@ -12,15 +12,15 @@ apply plugin: 'maven'
 apply plugin: 'signing'
 apply plugin: 'propdeps'
 apply plugin: 'propdeps-maven'
+apply plugin: 'maven-publish'
 apply plugin: 'io.spring.dependency-management'
 
 ext {
     javaVersion = JavaVersion.VERSION_1_8
-    springVersion = "4.3.14.RELEASE"
-    springBootVersion = "1.5.10.RELEASE"
-    jfinalVersion = "3.3"
-    jfinalWeixinVersion = "1.9"
-    junitVersion = "4.12"
+    springVersion = "4.3.18.RELEASE"
+    springBootVersion = "1.5.15.RELEASE"
+    jfinalVersion = "3.4"
+    jfinalWeixinVersion = "2.1"
     lombokVersion = '1.16.20'
 }
 
@@ -39,7 +39,7 @@ dependencies {
     provided "org.springframework.boot:spring-boot-starter-aop"
     optional "org.springframework.boot:spring-boot-configuration-processor"
     provided "org.projectlombok:lombok:${lombokVersion}"
-    testCompile "junit:junit:${junitVersion}"
+    testCompile "org.springframework.boot:spring-boot-starter-test"
 }
 
 dependencyManagement {
@@ -51,6 +51,21 @@ dependencyManagement {
 task sourcesJar(type: Jar, dependsOn: classes) {
     classifier = 'sources'
     from sourceSets.main.allSource
+}
+
+jar {
+    into("META-INF/maven/$project.group/$project.name") {
+        from { generatePomFileForMavenJavaPublication }
+        rename ".*", "pom.xml"
+    }
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
 }
 
 javadoc {

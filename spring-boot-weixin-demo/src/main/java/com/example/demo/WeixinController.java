@@ -1,6 +1,5 @@
 package com.example.demo;
 
-import com.jfinal.weixin.sdk.jfinal.MsgControllerAdapter;
 import com.jfinal.weixin.sdk.msg.in.InTextMsg;
 import com.jfinal.weixin.sdk.msg.in.event.InFollowEvent;
 import com.jfinal.weixin.sdk.msg.in.event.InMenuEvent;

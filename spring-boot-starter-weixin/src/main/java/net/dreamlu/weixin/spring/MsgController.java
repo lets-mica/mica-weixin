@@ -16,6 +16,7 @@ import com.jfinal.weixin.sdk.msg.out.OutTextMsg;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -34,9 +35,10 @@ public abstract class MsgController {
     /**
      * weixin 公众号服务器调用唯一入口，即在开发者中心输入的 URL 必须要指向此 action
      * @param imXmlMsg imXmlMsg
+     * @return {ResponseEntity}
      */
     @RequestMapping("")
-    public void index(@RequestBody String imXmlMsg) {
+    public ResponseEntity<Void> index(@RequestBody String imXmlMsg) {
         // 开发模式输出微信服务发送过来的  xml 消息
         if (ApiConfigKit.isDevMode()) {
             System.out.println("接收消息:");
@@ -133,6 +135,7 @@ public abstract class MsgController {
             logger.error("未能识别的消息类型。 消息 xml 内容为：\n" + imXmlMsg);
             processIsNotDefinedMsg((InNotDefinedMsg) msg);
         }
+        return ResponseEntity.ok().build();
     }
 
     /**

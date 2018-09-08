@@ -1,7 +1,7 @@
 package net.dreamlu.weixin.aspect;
 
 import com.jfinal.weixin.sdk.api.ApiConfigKit;
-import lombok.extern.slf4j.Slf4j;
+import lombok.AllArgsConstructor;
 import net.dreamlu.weixin.annotation.WxApi;
 import net.dreamlu.weixin.properties.DreamWeixinProperties;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -15,14 +15,9 @@ import javax.servlet.http.HttpServletRequest;
 
 @Aspect
 @Order
-@Slf4j
+@AllArgsConstructor
 public class WxApiAspect {
-
 	private final DreamWeixinProperties weixinProperties;
-
-	public WxApiAspect(DreamWeixinProperties weixinProperties) {
-		this.weixinProperties = weixinProperties;
-	}
 
 	@Around("@annotation(wxApi)")
 	public Object aroundWxApi(ProceedingJoinPoint point, WxApi wxApi) throws Throwable {

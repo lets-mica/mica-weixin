@@ -52,8 +52,8 @@ dream:
         appSecret: 11ed9e2b8e3e3c131e7be320a42b2b5a
         token: 123456
     wxa-config:
-      appid: wx4f53594f9a6b3dcb
-      appSecret: eec6482ba3804df05bd10895bace0579
+      app-id: wx4f53594f9a6b3dcb
+      app-secret: eec6482ba3804df05bd10895bace0579
 ```
 
 - cache使用spring的cache，需要`@EnableCaching`开启。
