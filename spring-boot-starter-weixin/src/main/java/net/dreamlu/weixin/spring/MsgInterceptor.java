@@ -45,11 +45,6 @@ public class MsgInterceptor extends HandlerInterceptorAdapter {
         if (bean instanceof DreamWxaMsgController) {
             return true;
         }
-        // 如果是服务器配置请求，则配置服务器并返回
-        if (isConfigServerRequest(request)) {
-            configServer(request, response);
-            return false;
-        }
         /**
          * 将 appId 与当前线程绑定，以便在后续操作中方便获取ApiConfig对象：
          * <pre>
@@ -57,6 +52,11 @@ public class MsgInterceptor extends HandlerInterceptorAdapter {
          * </pre>
          */
         ApiConfigKit.setThreadLocalAppId(appId);
+        // 如果是服务器配置请求，则配置服务器并返回
+        if (isConfigServerRequest(request)) {
+            configServer(request, response);
+            return false;
+        }
         // 对开发测试更加友好
         if (ApiConfigKit.isDevMode()) {
             return true;
