@@ -9,20 +9,18 @@ import com.jfinal.wxaapp.WxaConfig;
 import com.jfinal.wxaapp.WxaConfigKit;
 import lombok.AllArgsConstructor;
 import net.dreamlu.weixin.properties.DreamWeixinProperties;
-import org.springframework.beans.factory.InitializingBean;
-import org.springframework.boot.autoconfigure.AutoConfigureAfter;
+import org.springframework.beans.factory.SmartInitializingSingleton;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.List;
 
 @Configuration
-@AutoConfigureAfter(DreamWeixinAutoConfiguration.class)
 @AllArgsConstructor
-public class WeixinAppConfig implements InitializingBean {
+public class WeixinAppConfig implements SmartInitializingSingleton {
     private final DreamWeixinProperties weixinProperties;
 
     @Override
-    public void afterPropertiesSet() throws Exception {
+    public void afterSingletonsInstantiated() {
         boolean isdev = weixinProperties.isDevMode();
         ApiConfigKit.setDevMode(isdev);
         List<DreamWeixinProperties.ApiConfig> list = weixinProperties.getWxConfigs();

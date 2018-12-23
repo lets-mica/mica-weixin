@@ -3,12 +3,14 @@ jfinal weixin 的 spring boot starter，这个starter是为了方便boot用户�
 
 具体demo请查看：`spring-boot-weixin-demo` 和 [JFinal-weixin文档](https://gitee.com/jfinal/jfinal-weixin/wikis/pages?title=Home)
 
+Spring 全家桶 `QQ交流群`：479710041。
+
 ## Jar包依赖
 ```xml
 <dependency>
     <groupId>net.dreamlu</groupId>
     <artifactId>spring-boot-starter-weixin</artifactId>
-    <version>1.3.0</version>
+    <version>1.3.1</version>
 </dependency>
 ```
 
@@ -58,6 +60,9 @@ dream:
 - `access-token-cache`建议配置有效时间7100秒。
 
 ## 更新说明
+>## 2018-12-23 v1.3.1
+> `WeixinAppConfig` 改为实现 `SmartInitializingSingleton`。
+
 >## 2018-05-03 v1.3.0
 > 弃用`@EnableDreamWeixin`，导入jar包即可享用。
 > 将消息路由改为spring接管。
