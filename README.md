@@ -10,7 +10,7 @@ Spring 全家桶 `QQ交流群`：479710041。
 <dependency>
     <groupId>net.dreamlu</groupId>
     <artifactId>spring-boot-starter-weixin</artifactId>
-    <version>1.3.1</version>
+    <version>1.3.2</version>
 </dependency>
 ```
 
@@ -60,6 +60,9 @@ dream:
 - `access-token-cache`建议配置有效时间7100秒。
 
 ## 更新说明
+>## 2018-12-23 v1.3.2
+> 修复 `SpringAccessTokenCache` 没有配置的问题，感谢 qq:`A梦的小C` 反馈。
+
 >## 2018-12-23 v1.3.1
 > `WeixinAppConfig` 改为实现 `SmartInitializingSingleton`。
 

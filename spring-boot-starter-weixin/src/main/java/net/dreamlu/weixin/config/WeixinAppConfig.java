@@ -8,6 +8,7 @@ import com.jfinal.weixin.sdk.utils.JsonUtils;
 import com.jfinal.wxaapp.WxaConfig;
 import com.jfinal.wxaapp.WxaConfigKit;
 import lombok.AllArgsConstructor;
+import net.dreamlu.weixin.cache.SpringAccessTokenCache;
 import net.dreamlu.weixin.properties.DreamWeixinProperties;
 import org.springframework.beans.factory.SmartInitializingSingleton;
 import org.springframework.context.annotation.Configuration;
@@ -18,11 +19,13 @@ import java.util.List;
 @AllArgsConstructor
 public class WeixinAppConfig implements SmartInitializingSingleton {
     private final DreamWeixinProperties weixinProperties;
+    private final SpringAccessTokenCache accessTokenCache;
 
     @Override
     public void afterSingletonsInstantiated() {
         boolean isdev = weixinProperties.isDevMode();
         ApiConfigKit.setDevMode(isdev);
+        ApiConfigKit.setAccessTokenCache(accessTokenCache);
         List<DreamWeixinProperties.ApiConfig> list = weixinProperties.getWxConfigs();
         for (DreamWeixinProperties.ApiConfig apiConfig : list) {
             ApiConfig config = new ApiConfig();

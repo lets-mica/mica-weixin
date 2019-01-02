@@ -1,7 +1,5 @@
 package net.dreamlu.weixin.properties;
 
-import com.jfinal.weixin.sdk.api.ApiConfig;
-import com.jfinal.wxaapp.WxaConfig;
 import lombok.Getter;
 import lombok.Setter;
 import net.dreamlu.weixin.config.WxaMsgParser;
