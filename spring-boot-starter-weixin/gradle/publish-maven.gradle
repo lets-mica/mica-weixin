@@ -1,0 +1,101 @@
+apply plugin: 'signing'
+apply plugin: 'maven-publish'
+
+jar {
+    afterEvaluate {
+        manifest {
+            attributes 'Implementation-Version': version
+        }
+    }
+}
+
+task sourcesJar(type: Jar) {
+    archiveClassifier.set('sources')
+    from sourceSets.main.allSource
+}
+
+javadoc {
+    options {
+        encoding "UTF-8"
+        charSet 'UTF-8'
+        author true
+        version true
+        failOnError false
+        links "http://docs.oracle.com/javase/8/docs/api"
+    }
+}
+
+task javadocJar(type: Jar) {
+    archiveClassifier.set('javadoc')
+    from 'build/docs/javadoc'
+}
+
+artifacts {
+    archives sourcesJar
+    archives javadocJar
+}
+
+tasks.whenTaskAdded { task ->
+    if (task.name.contains('signMavenJavaPublication')) {
+        task.enabled = new File(project.property('signing.secretKeyRingFile') as String).isFile()
+    }
+}
+
+publishing {
+    repositories {
+        maven {
+            url = version.endsWith('SNAPSHOT') ? REPOSITORY_URL_SNAPSHOT : REPOSITORY_URL_RELEASE
+            credentials {
+                username getRepositoryUsername()
+                password getRepositoryPassword()
+            }
+        }
+    }
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+
+            artifact sourcesJar
+            artifact javadocJar
+
+            pom {
+                name = 'spring-boot-starter-weixin'
+                packaging = 'jar'
+                description = 'A spring boot starter for JFinal weixin.'
+                url = 'https://gitee.com/596392912/spring-boot-starter-weixin'
+
+                scm {
+                    connection = 'scm:git@gitee.com:/596392912/spring-boot-starter-weixin.git'
+                    developerConnection = 'scm:git@gitee.com/596392912/spring-boot-starter-weixin.git'
+                    url = 'https://gitee.com/596392912/spring-boot-starter-weixin'
+                }
+
+                licenses {
+                    license {
+                        name = 'The MIT License (MIT)'
+                        url = 'http://opensource.org/licenses/MIT'
+                    }
+                }
+
+                developers {
+                    developer {
+                        name = 'Dreamlu'
+                        email = 'qq596392912@gmail.com'
+                    }
+                }
+            }
+        }
+    }
+
+    signing {
+        sign publishing.publications.mavenJava
+    }
+}
+
+def getRepositoryUsername() {
+    return hasProperty('NEXUS_OSS_USER_NAME') ? NEXUS_OSS_USER_NAME : ""
+}
+
+def getRepositoryPassword() {
+    return hasProperty('NEXUS_OSS_PASS_WORD') ? NEXUS_OSS_PASS_WORD : ""
+}

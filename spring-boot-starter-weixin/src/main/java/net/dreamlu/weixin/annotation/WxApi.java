@@ -18,12 +18,13 @@ import java.lang.annotation.*;
 @Controller
 public @interface WxApi {
 
-    /**
-     * Alias for {@link RequestMapping#value}.
-     * @return {String[]}
-     */
-    @AliasFor(annotation = RequestMapping.class)
-    String[] value() default {};
+	/**
+	 * Alias for {@link RequestMapping#value}.
+	 *
+	 * @return {String[]}
+	 */
+	@AliasFor(annotation = RequestMapping.class)
+	String[] value() default {};
 
 //	/**
 //	 * 目前不支持多小程序

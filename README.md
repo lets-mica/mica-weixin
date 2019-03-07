@@ -3,14 +3,17 @@ jfinal weixin 的 spring boot starter，这个starter是为了方便boot用户�
 
 具体demo请查看：`spring-boot-weixin-demo` 和 [JFinal-weixin文档](https://gitee.com/jfinal/jfinal-weixin/wikis/pages?title=Home)
 
-Spring 全家桶 `QQ交流群`：479710041。
+推荐
+Spring boot 高效开发之 Mica 工具集：https://gitee.com/596392912/mica
 
-## Jar包依赖
+加入【如梦技术】Spring QQ群：479710041，了解更多。
+
+## Jar包依赖（最新）
 ```xml
 <dependency>
     <groupId>net.dreamlu</groupId>
     <artifactId>spring-boot-starter-weixin</artifactId>
-    <version>1.3.2</version>
+    <version>1.3.3</version>
 </dependency>
 ```
 
@@ -60,6 +63,13 @@ dream:
 - `access-token-cache`建议配置有效时间7100秒。
 
 ## 更新说明
+>## 2019-03-07 v1.3.3
+> 升级到 `gradle 5.2.1`。
+> 升级 `JFinal` 到 `3.6`。
+> 升级 `JFinal Weixin` 到 `2.3`。
+> 使用 `mica-auto` 生成 `spring.factories`、`devtools` 配置。
+> InMsg 消息对象采用 request 存储，去掉 `@WxMsgController` 中的 Scope 配置，将消息控制器还原为单例。
+
 >## 2018-12-23 v1.3.2
 > 修复 `SpringAccessTokenCache` 没有配置的问题，感谢 qq:`A梦的小C` 反馈。
 
@@ -73,20 +83,3 @@ dream:
 ## 捐助共勉
  <img src="https://gitee.com/uploads/images/2018/0311/153544_5afb12b1_372.jpeg" width="250px"/>
  <img src="https://gitee.com/uploads/images/2018/0311/153556_679db579_372.jpeg" width="250px"/>
-
-## VIP群
-捐助~~￥199~~限时￥99，即可加入如梦技术VIP，捐助后联系QQ: 596392912
-
-#### VIP权益
-1. spring boot版安全框架（maven + spring boot + spring security + thymeleaf）
-
-2. 技术资料共享，技术指导和技术路线规划。
-
-3. spring cloud脚手架（改造中）
-
-4. 更多私有Git资源，
-
-### spring boot版安全框架 Demo
-地址：http://demo.dreamlu.net
-
-账号vs密码：test、test
