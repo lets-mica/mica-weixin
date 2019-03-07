@@ -3,8 +3,12 @@ jfinal weixin 的 spring boot starter，这个starter是为了方便boot用户�
 
 具体demo请查看：`spring-boot-weixin-demo` 和 [JFinal-weixin文档](https://gitee.com/jfinal/jfinal-weixin/wikis/pages?title=Home)
 
-推荐
-Spring boot 高效开发之 Mica 工具集：https://gitee.com/596392912/mica
+## 推荐
+- Spring boot 微服务，高效开发之 mica 工具集：https://gitee.com/596392912/mica
+
+- `pig` 宇宙最强微服务（架构师必备）：https://gitee.com/log4j/pig
+
+- `SpringBlade` 完整的线上解决方案（系统生产必备）：https://gitee.com/smallc/SpringBlade
 
 加入【如梦技术】Spring QQ群：479710041，了解更多。
 
@@ -65,10 +69,14 @@ dream:
 ## 更新说明
 >## 2019-03-07 v1.3.3
 > 升级到 `gradle 5.2.1`。
+
 > 升级 `JFinal` 到 `3.6`。
+
 > 升级 `JFinal Weixin` 到 `2.3`。
+
 > 使用 `mica-auto` 生成 `spring.factories`、`devtools` 配置。
-> InMsg 消息对象采用 request 存储，去掉 `@WxMsgController` 中的 Scope 配置，将消息控制器还原为单例。
+
+> `InMsg` 消息对象采用 `request` 存储，去掉 `@WxMsgController` 中的 Scope 配置，将消息控制器还原为单例。
 
 >## 2018-12-23 v1.3.2
 > 修复 `SpringAccessTokenCache` 没有配置的问题，感谢 qq:`A梦的小C` 反馈。
