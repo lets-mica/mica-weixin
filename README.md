@@ -88,6 +88,8 @@ dream:
 > 弃用`@EnableDreamWeixin`，导入jar包即可享用。
 > 将消息路由改为spring接管。
 
-## 捐助共勉
- <img src="https://gitee.com/uploads/images/2018/0311/153544_5afb12b1_372.jpeg" width="250px"/>
- <img src="https://gitee.com/uploads/images/2018/0311/153556_679db579_372.jpeg" width="250px"/>
+## 微信公众号
+
+![如梦技术](docs/dreamlu-weixin.jpg)
+
+精彩内容每日推荐！
