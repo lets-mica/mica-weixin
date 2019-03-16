@@ -49,7 +49,7 @@ public class MsgInterceptor extends HandlerInterceptorAdapter {
 		boolean isWx = bean instanceof MsgController;
 		String token;
 		if (isWx) {
-			token = ApiConfigKit.getApiConfig().getToken();
+			token = ApiConfigKit.getApiConfig(appId).getToken();
 		} else {
 			token = WxaConfigKit.getWxaConfig().getToken();
 		}
