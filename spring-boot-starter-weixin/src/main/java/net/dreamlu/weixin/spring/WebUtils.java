@@ -7,6 +7,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+/**
+ * web工具类
+ *
+ * @author L.cm
+ */
 class WebUtils {
 	private static final Log logger = LogFactory.getLog(WebUtils.class);
 

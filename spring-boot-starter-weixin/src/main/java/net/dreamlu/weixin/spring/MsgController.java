@@ -23,6 +23,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * 消息控制器
+ *
+ * @author L.cm
+ */
 public abstract class MsgController {
 	private static final Log logger = LogFactory.getLog(WebUtils.class);
 	private static final String IN_MSG_WX_CACHE_KEY = "_IN_MSG_WX_CACHE_KEY_";
