@@ -91,6 +91,12 @@ dream:
 > 弃用`@EnableDreamWeixin`，导入jar包即可享用。
 > 将消息路由改为spring接管。
 
+## 开源推荐
+- `Avue` 一款基于vue可配置化的神奇框架：[https://gitee.com/smallweigit/avue](https://gitee.com/smallweigit/avue)
+- `pig` 宇宙最强微服务（架构师必备）：[https://gitee.com/log4j/pig](https://gitee.com/log4j/pig)
+- `SpringBlade` 完整的线上解决方案（企业开发必备）：[https://gitee.com/smallc/SpringBlade](https://gitee.com/smallc/SpringBlade)
+- `IJPay` 支付SDK让支付触手可及：[https://gitee.com/javen205/IJPay](https://gitee.com/javen205/IJPay)
+
 ## 微信公众号
 
 ![如梦技术](docs/dreamlu-weixin.jpg)
