@@ -3,14 +3,13 @@ jfinal weixin 的 spring boot starter，这个starter是为了方便boot用户�
 
 具体demo请查看：`spring-boot-weixin-demo` 和 [JFinal-weixin文档](https://gitee.com/jfinal/jfinal-weixin/wikis/pages?title=Home)
 
-## 推荐
+## 开源推荐
 - Spring boot 微服务，高效开发之 mica 工具集：https://gitee.com/596392912/mica
-
-- `pig` 宇宙最强微服务（架构师必备）：https://gitee.com/log4j/pig
-
-- `SpringBlade` 完整的线上解决方案（系统生产必备）：https://gitee.com/smallc/SpringBlade
-
-加入【如梦技术】Spring QQ群：479710041，了解更多。
+- `Avue` 一款基于vue可配置化的神奇框架：[https://gitee.com/smallweigit/avue](https://gitee.com/smallweigit/avue)
+- `pig` 宇宙最强微服务（架构师必备）：[https://gitee.com/log4j/pig](https://gitee.com/log4j/pig)
+- `SpringBlade` 完整的线上解决方案（企业开发必备）：[https://gitee.com/smallc/SpringBlade](https://gitee.com/smallc/SpringBlade)
+- `IJPay` 支付SDK让支付触手可及：[https://gitee.com/javen205/IJPay](https://gitee.com/javen205/IJPay)
+- 加入【如梦技术】Spring QQ群：479710041，了解更多。
 
 ## Jar包依赖（最新）
 ```xml
@@ -90,12 +89,6 @@ dream:
 >## 2018-05-03 v1.3.0
 > 弃用`@EnableDreamWeixin`，导入jar包即可享用。
 > 将消息路由改为spring接管。
-
-## 开源推荐
-- `Avue` 一款基于vue可配置化的神奇框架：[https://gitee.com/smallweigit/avue](https://gitee.com/smallweigit/avue)
-- `pig` 宇宙最强微服务（架构师必备）：[https://gitee.com/log4j/pig](https://gitee.com/log4j/pig)
-- `SpringBlade` 完整的线上解决方案（企业开发必备）：[https://gitee.com/smallc/SpringBlade](https://gitee.com/smallc/SpringBlade)
-- `IJPay` 支付SDK让支付触手可及：[https://gitee.com/javen205/IJPay](https://gitee.com/javen205/IJPay)
 
 ## 微信公众号
 
