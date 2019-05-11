@@ -10,6 +10,7 @@ import net.dreamlu.weixin.properties.DreamWeixinProperties;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.core.annotation.AnnotationUtils;
+import org.springframework.util.StringUtils;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
@@ -41,7 +42,9 @@ public class MsgInterceptor extends HandlerInterceptorAdapter {
 		WxApi wxApi = AnnotationUtils.getAnnotation(beanType, WxApi.class);
 		String appId = request.getParameter(weixinProperties.getAppIdKey());
 		if (wxApi != null) {
-			ApiConfigKit.setThreadLocalAppId(appId);
+			if (StringUtils.hasText(appId)) {
+				ApiConfigKit.setThreadLocalAppId(appId);
+			}
 			return true;
 		}
 		// 判断是否多公众号，将 appId 与当前线程绑定，以便在后续操作中方便获取ApiConfig对象：
@@ -49,19 +52,19 @@ public class MsgInterceptor extends HandlerInterceptorAdapter {
 		boolean isWx = bean instanceof MsgController;
 		String token;
 		if (isWx) {
-			token = ApiConfigKit.getApiConfig(appId).getToken();
+			if (StringUtils.hasText(appId)) {
+				ApiConfigKit.setThreadLocalAppId(appId);
+				token = ApiConfigKit.getApiConfig(appId).getToken();
+			} else {
+				token = ApiConfigKit.getApiConfig().getToken();
+			}
 		} else {
 			token = WxaConfigKit.getWxaConfig().getToken();
 		}
-
 		// 如果是服务器配置请求，则配置服务器并返回
 		if (isConfigServerRequest(request)) {
 			configServer(request, response, token);
 			return false;
-		}
-		// 判断是否多公众号，将 appId 与当前线程绑定，以便在后续操作中方便获取ApiConfig对象：
-		if (isWx) {
-			ApiConfigKit.setThreadLocalAppId(appId);
 		}
 		// 对开发测试更加友好
 		if (ApiConfigKit.isDevMode()) {
