@@ -16,7 +16,7 @@ jfinal weixin 的 spring boot starter，这个starter是为了方便boot用户�
 <dependency>
     <groupId>net.dreamlu</groupId>
     <artifactId>spring-boot-starter-weixin</artifactId>
-    <version>1.3.5</version>
+    <version>1.3.6</version>
 </dependency>
 ```
 
@@ -66,6 +66,9 @@ dream:
 - `access-token-cache`建议配置有效时间7100秒。
 
 ## 更新说明
+>## 2019-08-01 v1.3.6
+> 升级 jfinal、jfinal-weixin、okhttp 版本。
+
 >## 2019-03-17 v1.3.5
 > 解决单公众号下消息报错
 
