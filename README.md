@@ -57,6 +57,8 @@ dream:
       - appId: wxc03edcd008ad1e70
         appSecret: 11ed9e2b8e3e3c131e7be320a42b2b5a
         token: 123456
+        encodingAesKey: xxx
+        messageEncrypt: true
     wxa-config:
       app-id: wx4f53594f9a6b3dcb
       app-secret: eec6482ba3804df05bd10895bace0579
