@@ -17,8 +17,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  *
  * @author L.cm
  */
+@Configuration
 @RequiredArgsConstructor
-@Configuration(proxyBeanMethods = false)
 @EnableConfigurationProperties(DreamWeixinProperties.class)
 public class DreamWeixinAutoConfiguration {
 	private final CacheManager cacheManager;

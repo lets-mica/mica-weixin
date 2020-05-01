@@ -22,8 +22,8 @@ import java.util.List;
  *
  * @author L.cm
  */
+@Configuration
 @RequiredArgsConstructor
-@Configuration(proxyBeanMethods = false)
 public class WeixinAppConfig implements SmartInitializingSingleton {
 	private final DreamWeixinProperties weixinProperties;
 	private final SpringAccessTokenCache accessTokenCache;
