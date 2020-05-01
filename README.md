@@ -68,40 +68,36 @@ dream:
 - `access-token-cache`建议配置有效时间7100秒。
 
 ## 更新说明
->## 2020-05-01 v1.4.0
-> 支持多小程序消息，**注意：** yml 配置 key 由 dream.weixin.wxa-config 改为 dream.weixin.wxa-configs。
-> 支持自定义公众号和小程序配置加载，可用于从数据库等加载配置。
-> 升级 jfinal、jfinal-weixin 版本。
+### 2020-05-01 v1.4.0
+* 支持多小程序消息，**注意：** yml 配置 key 由 dream.weixin.wxa-config 改为 dream.weixin.wxa-configs。
+* 支持自定义公众号和小程序配置加载，可用于从数据库等加载配置。
+* 升级 jfinal、jfinal-weixin 版本。
 
->## 2019-08-01 v1.3.6
-> 升级 jfinal、jfinal-weixin、okhttp 版本。
+### 2019-08-01 v1.3.6
+* 升级 jfinal、jfinal-weixin、okhttp 版本。
 
->## 2019-03-17 v1.3.5
-> 解决单公众号下消息报错
+### 2019-03-17 v1.3.5
+* 解决单公众号下消息报错
 
->## 2019-03-17 v1.3.4
-> 解决小程序，启用并设置消息推送配置校验不通过的问题。
+### 2019-03-17 v1.3.4
+* 解决小程序，启用并设置消息推送配置校验不通过的问题。
 
->## 2019-03-07 v1.3.3
-> 升级到 `gradle 5.2.1`。
+### 2019-03-07 v1.3.3
+* 升级到 `gradle 5.2.1`。
+* 升级 `JFinal` 到 `3.6`。
+* 升级 `JFinal Weixin` 到 `2.3`。
+* 使用 `mica-auto` 生成 `spring.factories`、`devtools` 配置。
+* `InMsg` 消息对象采用 `request` 存储，去掉 `@WxMsgController` 中的 Scope 配置，将消息控制器还原为单例。
 
-> 升级 `JFinal` 到 `3.6`。
+### 2018-12-23 v1.3.2
+* 修复 `SpringAccessTokenCache` 没有配置的问题，感谢 qq:`A梦的小C` 反馈。
 
-> 升级 `JFinal Weixin` 到 `2.3`。
+### 2018-12-23 v1.3.1
+* `WeixinAppConfig` 改为实现 `SmartInitializingSingleton`。
 
-> 使用 `mica-auto` 生成 `spring.factories`、`devtools` 配置。
-
-> `InMsg` 消息对象采用 `request` 存储，去掉 `@WxMsgController` 中的 Scope 配置，将消息控制器还原为单例。
-
->## 2018-12-23 v1.3.2
-> 修复 `SpringAccessTokenCache` 没有配置的问题，感谢 qq:`A梦的小C` 反馈。
-
->## 2018-12-23 v1.3.1
-> `WeixinAppConfig` 改为实现 `SmartInitializingSingleton`。
-
->## 2018-05-03 v1.3.0
-> 弃用`@EnableDreamWeixin`，导入jar包即可享用。
-> 将消息路由改为spring接管。
+### 2018-05-03 v1.3.0
+* 弃用`@EnableDreamWeixin`，导入jar包即可享用。
+* 将消息路由改为spring接管。
 
 ## 微信公众号
 
