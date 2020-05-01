@@ -26,7 +26,6 @@ import java.util.Arrays;
 @RequiredArgsConstructor
 public class MsgInterceptor extends HandlerInterceptorAdapter {
 	private static final Log logger = LogFactory.getLog(MsgInterceptor.class);
-
 	private final DreamWeixinProperties weixinProperties;
 
 	@Override
@@ -59,7 +58,12 @@ public class MsgInterceptor extends HandlerInterceptorAdapter {
 				token = ApiConfigKit.getApiConfig().getToken();
 			}
 		} else {
-			token = WxaConfigKit.getWxaConfig().getToken();
+			if (StringUtils.hasText(appId)) {
+				ApiConfigKit.setThreadLocalAppId(appId);
+				token = WxaConfigKit.getWxaConfig(appId).getToken();
+			} else {
+				token = WxaConfigKit.getWxaConfig().getToken();
+			}
 		}
 		// 如果是服务器配置请求，则配置服务器并返回
 		if (isConfigServerRequest(request)) {
@@ -142,5 +146,6 @@ public class MsgInterceptor extends HandlerInterceptorAdapter {
 	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
 		super.afterCompletion(request, response, handler, ex);
 		ApiConfigKit.removeThreadLocalAppId();
+		WxaConfigKit.removeThreadLocalAppId();
 	}
 }

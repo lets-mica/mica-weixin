@@ -26,10 +26,4 @@ public @interface WxApi {
 	@AliasFor(annotation = RequestMapping.class)
 	String[] value() default {};
 
-	/**
-	 * 目前不支持多小程序
-	 * @return {ApiType}
-	 */
-	ApiType type() default ApiType.WX;
-
 }

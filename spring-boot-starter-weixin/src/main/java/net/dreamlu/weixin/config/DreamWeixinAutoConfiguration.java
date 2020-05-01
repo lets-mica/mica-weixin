@@ -1,6 +1,6 @@
 package net.dreamlu.weixin.config;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import net.dreamlu.weixin.cache.SpringAccessTokenCache;
 import net.dreamlu.weixin.properties.DreamWeixinProperties;
 import net.dreamlu.weixin.spring.MsgInterceptor;
@@ -17,8 +17,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  *
  * @author L.cm
  */
-@Configuration
-@AllArgsConstructor
+@RequiredArgsConstructor
+@Configuration(proxyBeanMethods = false)
 @EnableConfigurationProperties(DreamWeixinProperties.class)
 public class DreamWeixinAutoConfiguration {
 	private final CacheManager cacheManager;
@@ -30,12 +30,9 @@ public class DreamWeixinAutoConfiguration {
 	}
 
 	@Configuration
+	@RequiredArgsConstructor
 	public static class MsgConfiguration extends WebMvcConfigurerAdapter {
 		private final DreamWeixinProperties properties;
-
-		public MsgConfiguration(DreamWeixinProperties properties) {
-			this.properties = properties;
-		}
 
 		@Override
 		public void addInterceptors(InterceptorRegistry registry) {

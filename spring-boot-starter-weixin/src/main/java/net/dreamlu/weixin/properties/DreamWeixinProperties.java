@@ -2,12 +2,19 @@ package net.dreamlu.weixin.properties;
 
 import lombok.Getter;
 import lombok.Setter;
+import net.dreamlu.weixin.config.WxConf;
+import net.dreamlu.weixin.config.WxaConf;
 import net.dreamlu.weixin.config.WxaMsgParser;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 配置
+ *
+ * @author L.cm
+ */
 @Getter
 @Setter
 @ConfigurationProperties("dream.weixin")
@@ -32,11 +39,11 @@ public class DreamWeixinProperties {
 	/**
 	 * 多公众号配置
 	 */
-	private List<ApiConfig> wxConfigs = new ArrayList<>();
+	private List<WxConf> wxConfigs = new ArrayList<>();
 	/**
 	 * 小程序配置
 	 */
-	private WxaConfig wxaConfig = new WxaConfig();
+	private List<WxaConf> wxaConfigs = new ArrayList<>();
 	/**
 	 * 小程序消息解析，默认xml，支持json和xml
 	 */
@@ -46,25 +53,5 @@ public class DreamWeixinProperties {
 	 */
 	private String jsonType = "jackson";
 
-	@Getter
-	@Setter
-	public static class ApiConfig {
-		private String token;
-		private String appId;
-		private String appSecret;
-		private String encodingAesKey;
-		// 消息加密与否
-		private boolean messageEncrypt = false;
-	}
 
-	@Getter
-	@Setter
-	public static class WxaConfig {
-		private String appId;
-		private String appSecret;
-		private String token;
-		private String encodingAesKey;
-		// 消息加密与否
-		private boolean messageEncrypt = false;
-	}
 }

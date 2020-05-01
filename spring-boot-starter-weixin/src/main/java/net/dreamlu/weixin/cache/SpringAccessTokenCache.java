@@ -4,6 +4,11 @@ import com.jfinal.weixin.sdk.cache.IAccessTokenCache;
 import lombok.AllArgsConstructor;
 import org.springframework.cache.Cache;
 
+/**
+ * 基于 spring cache 的 weixin token 缓存
+ *
+ * @author L.cm
+ */
 @AllArgsConstructor
 public class SpringAccessTokenCache implements IAccessTokenCache {
 	private final static String ACCESS_TOKEN_PREFIX = "dream-weixin:token:";

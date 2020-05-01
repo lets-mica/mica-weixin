@@ -6,5 +6,8 @@ package net.dreamlu.weixin.config;
  * @author L.cm
  */
 public enum WxaMsgParser {
+	/**
+	 * json 、xml
+	 */
 	JSON, XML
 }

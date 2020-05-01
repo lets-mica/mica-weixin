@@ -7,12 +7,14 @@ import com.jfinal.weixin.sdk.api.ApiConfigKit;
 import com.jfinal.weixin.sdk.utils.JsonUtils;
 import com.jfinal.wxaapp.WxaConfig;
 import com.jfinal.wxaapp.WxaConfigKit;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import net.dreamlu.weixin.cache.SpringAccessTokenCache;
 import net.dreamlu.weixin.properties.DreamWeixinProperties;
+import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.SmartInitializingSingleton;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,52 +22,58 @@ import java.util.List;
  *
  * @author L.cm
  */
-@Configuration
-@AllArgsConstructor
+@RequiredArgsConstructor
+@Configuration(proxyBeanMethods = false)
 public class WeixinAppConfig implements SmartInitializingSingleton {
 	private final DreamWeixinProperties weixinProperties;
 	private final SpringAccessTokenCache accessTokenCache;
+	private final ObjectProvider<WxConfigLoader> provider;
 
 	@Override
 	public void afterSingletonsInstantiated() {
 		boolean isdev = weixinProperties.isDevMode();
 		ApiConfigKit.setDevMode(isdev);
 		ApiConfigKit.setAccessTokenCache(accessTokenCache);
-		List<DreamWeixinProperties.ApiConfig> list = weixinProperties.getWxConfigs();
-		for (DreamWeixinProperties.ApiConfig apiConfig : list) {
+		WxConfigLoader configLoader = provider.getIfAvailable(() -> WxConfigLoader.DEFAULT);
+		List<WxConf> wxConfList = new ArrayList<>(weixinProperties.getWxConfigs());
+		wxConfList.addAll(configLoader.loadWx());
+		for (WxConf conf : wxConfList) {
 			ApiConfig config = new ApiConfig();
-			if (StrKit.notBlank(apiConfig.getAppId())) {
-				config.setAppId(apiConfig.getAppId());
+			if (StrKit.notBlank(conf.getAppId())) {
+				config.setAppId(conf.getAppId());
 			}
-			if (StrKit.notBlank(apiConfig.getAppSecret())) {
-				config.setAppSecret(apiConfig.getAppSecret());
+			if (StrKit.notBlank(conf.getAppSecret())) {
+				config.setAppSecret(conf.getAppSecret());
 			}
-			if (StrKit.notBlank(apiConfig.getToken())) {
-				config.setToken(apiConfig.getToken());
+			if (StrKit.notBlank(conf.getToken())) {
+				config.setToken(conf.getToken());
 			}
-			if (StrKit.notBlank(apiConfig.getEncodingAesKey())) {
-				config.setEncodingAesKey(apiConfig.getEncodingAesKey());
+			if (StrKit.notBlank(conf.getEncodingAesKey())) {
+				config.setEncodingAesKey(conf.getEncodingAesKey());
 			}
-			config.setEncryptMessage(apiConfig.isMessageEncrypt());
+			config.setEncryptMessage(conf.isMessageEncrypt());
 			ApiConfigKit.putApiConfig(config);
 		}
-		DreamWeixinProperties.WxaConfig apiConfig = weixinProperties.getWxaConfig();
-		WxaConfig config = new WxaConfig();
-		if (StrKit.notBlank(apiConfig.getAppId())) {
-			config.setAppId(apiConfig.getAppId());
+		List<WxaConf> wxaConfList = new ArrayList<>(weixinProperties.getWxaConfigs());
+		wxaConfList.addAll(configLoader.loadWxa());
+		for (WxaConf conf : wxaConfList) {
+			WxaConfig config = new WxaConfig();
+			if (StrKit.notBlank(conf.getAppId())) {
+				config.setAppId(conf.getAppId());
+			}
+			if (StrKit.notBlank(conf.getAppSecret())) {
+				config.setAppSecret(conf.getAppSecret());
+			}
+			if (StrKit.notBlank(conf.getToken())) {
+				config.setToken(conf.getToken());
+			}
+			if (StrKit.notBlank(conf.getEncodingAesKey())) {
+				config.setEncodingAesKey(conf.getEncodingAesKey());
+			}
+			config.setMessageEncrypt(conf.isMessageEncrypt());
+			WxaConfigKit.setWxaConfig(config);
 		}
-		if (StrKit.notBlank(apiConfig.getAppSecret())) {
-			config.setAppSecret(apiConfig.getAppSecret());
-		}
-		if (StrKit.notBlank(apiConfig.getToken())) {
-			config.setToken(apiConfig.getToken());
-		}
-		if (StrKit.notBlank(apiConfig.getEncodingAesKey())) {
-			config.setEncodingAesKey(apiConfig.getEncodingAesKey());
-		}
-		config.setMessageEncrypt(apiConfig.isMessageEncrypt());
 		WxaConfigKit.setDevMode(isdev);
-		WxaConfigKit.setWxaConfig(config);
 		if (WxaMsgParser.JSON == weixinProperties.getWxaMsgParser()) {
 			WxaConfigKit.useJsonMsgParser();
 		}
