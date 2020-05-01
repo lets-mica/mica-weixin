@@ -34,7 +34,11 @@ public class WeixinAppConfig implements SmartInitializingSingleton {
 		boolean isdev = weixinProperties.isDevMode();
 		ApiConfigKit.setDevMode(isdev);
 		ApiConfigKit.setAccessTokenCache(accessTokenCache);
-		WxConfigLoader configLoader = provider.getIfAvailable(() -> WxConfigLoader.DEFAULT);
+		WxConfigLoader configLoader = provider.getIfAvailable();
+		// 兼容老板 spring boot
+		if (configLoader == null) {
+			configLoader = WxConfigLoader.DEFAULT;
+		}
 		List<WxConf> wxConfList = new ArrayList<>(weixinProperties.getWxConfigs());
 		wxConfList.addAll(configLoader.loadWx());
 		for (WxConf conf : wxConfList) {

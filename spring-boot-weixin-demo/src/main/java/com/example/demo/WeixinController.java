@@ -4,6 +4,7 @@ import com.jfinal.weixin.sdk.msg.in.InTextMsg;
 import com.jfinal.weixin.sdk.msg.in.event.InFollowEvent;
 import com.jfinal.weixin.sdk.msg.in.event.InMenuEvent;
 import com.jfinal.weixin.sdk.msg.out.OutTextMsg;
+import com.jfinal.weixin.sdk.utils.JsonUtils;
 import net.dreamlu.weixin.annotation.WxMsgController;
 import net.dreamlu.weixin.properties.DreamWeixinProperties;
 import net.dreamlu.weixin.spring.DreamMsgControllerAdapter;
@@ -24,7 +25,7 @@ public class WeixinController extends DreamMsgControllerAdapter {
 
     @Override
     protected void processInTextMsg(InTextMsg inTextMsg) {
-        System.out.println(weixinProperties.getWxaConfig().getAppId());
+        System.out.println(JsonUtils.toJson(weixinProperties));
         OutTextMsg outMsg = new OutTextMsg(inTextMsg);
         outMsg.setContent(inTextMsg.getContent());
         render(outMsg);
