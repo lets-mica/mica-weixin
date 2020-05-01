@@ -16,7 +16,7 @@ jfinal weixin 的 spring boot starter，这个starter是为了方便boot用户�
 <dependency>
     <groupId>net.dreamlu</groupId>
     <artifactId>spring-boot-starter-weixin</artifactId>
-    <version>1.3.6</version>
+    <version>1.4.0</version>
 </dependency>
 ```
 
@@ -43,7 +43,7 @@ jfinal weixin 的 spring boot starter，这个starter是为了方便boot用户�
 | dream.weixin.dev-mode | false | 开发模式 |
 | dream.weixin.url-patterns | /weixin/* | weixin 消息处理spring拦截器url前缀 |
 | dream.weixin.wx-configs | 公众号的配置 | 多公众号配置 |
-| dream.weixin.wxa-config | 小程序配置 | 小程序配置 |
+| dream.weixin.wxa-configs | 小程序配置 | 小程序配置 |
 
 `注意`：
 - demo中的`application.yml`
@@ -59,15 +59,20 @@ dream:
         token: 123456
         encodingAesKey: xxx
         messageEncrypt: true
-    wxa-config:
-      app-id: wx4f53594f9a6b3dcb
-      app-secret: eec6482ba3804df05bd10895bace0579
+    wxa-configs:
+      - app-id: wx4f53594f9a6b3dcb
+        app-secret: eec6482ba3804df05bd10895bace0579
 ```
 
 - cache使用spring的cache，需要`@EnableCaching`开启。
 - `access-token-cache`建议配置有效时间7100秒。
 
 ## 更新说明
+>## 2020-05-01 v1.4.0
+> 支持多小程序消息，**注意：** yml 配置 key 由 dream.weixin.wxa-config 改为 dream.weixin.wxa-configs。
+> 支持自定义公众号和小程序配置加载，可用于从数据库等加载配置。
+> 升级 jfinal、jfinal-weixin 版本。
+
 >## 2019-08-01 v1.3.6
 > 升级 jfinal、jfinal-weixin、okhttp 版本。
 
