@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import com.jfinal.weixin.sdk.utils.JsonUtils;
+import com.jfinal.wxaapp.WxaConfigKit;
 import com.jfinal.wxaapp.msg.bean.WxaImageMsg;
 import com.jfinal.wxaapp.msg.bean.WxaTextMsg;
 import com.jfinal.wxaapp.msg.bean.WxaUserEnterSessionMsg;
@@ -16,7 +18,8 @@ public class WxaController extends DreamWxaMsgController {
 
     @Override
     protected void processTextMsg(WxaTextMsg wxaTextMsg) {
-
+		System.out.println("接受到小程序消息：" + WxaConfigKit.getAppId());
+		System.out.println(JsonUtils.toJson(wxaTextMsg));
     }
 
     @Override
