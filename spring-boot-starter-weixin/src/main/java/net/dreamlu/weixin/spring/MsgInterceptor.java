@@ -59,7 +59,7 @@ public class MsgInterceptor extends HandlerInterceptorAdapter {
 			}
 		} else {
 			if (StringUtils.hasText(appId)) {
-				ApiConfigKit.setThreadLocalAppId(appId);
+				WxaConfigKit.setThreadLocalAppId(appId);
 				token = WxaConfigKit.getWxaConfig(appId).getToken();
 			} else {
 				token = WxaConfigKit.getWxaConfig().getToken();
