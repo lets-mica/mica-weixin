@@ -9,7 +9,6 @@ jfinal weixin 的 spring boot starter，这个starter是为了方便boot用户�
 - `pig` 宇宙最强微服务（架构师必备）：[https://gitee.com/log4j/pig](https://gitee.com/log4j/pig)
 - `SpringBlade` 完整的线上解决方案（企业开发必备）：[https://gitee.com/smallc/SpringBlade](https://gitee.com/smallc/SpringBlade)
 - `IJPay` 支付SDK让支付触手可及：[https://gitee.com/javen205/IJPay](https://gitee.com/javen205/IJPay)
-- 加入【如梦技术】Spring QQ群：479710041，了解更多。
 
 ## Jar包依赖（最新）
 ```xml
