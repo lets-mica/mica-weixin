@@ -4,7 +4,7 @@ jfinal weixin 的 spring boot starter，这个starter是为了方便boot用户�
 具体demo请查看：`mica-weixin-demo` 和 [JFinal-weixin文档](https://gitee.com/jfinal/jfinal-weixin/wikis/pages?title=Home)
 
 ## 开源推荐
-- Spring boot 微服务，高效开发之 mica 工具集：https://gitee.com/596392912/mica
+- Spring boot 微服务，高效开发之 mica 工具集：[https://gitee.com/596392912/mica](https://gitee.com/596392912/mica)
 - `Avue` 一款基于vue可配置化的神奇框架：[https://gitee.com/smallweigit/avue](https://gitee.com/smallweigit/avue)
 - `pig` 宇宙最强微服务（架构师必备）：[https://gitee.com/log4j/pig](https://gitee.com/log4j/pig)
 - `SpringBlade` 完整的线上解决方案（企业开发必备）：[https://gitee.com/smallc/SpringBlade](https://gitee.com/smallc/SpringBlade)
@@ -63,10 +63,13 @@ dream:
         app-secret: eec6482ba3804df05bd10895bace0579
 ```
 
-- cache使用spring的cache，需要`@EnableCaching`开启。
 - `access-token-cache`建议配置有效时间7100秒。
 
 ## 更新说明
+### 2020-07-05 v2.0.0
+- 改名为 mica-weixin，提升 mica 品牌。
+- 升级 jfinal、jfinal-weixin 版本。
+
 ### 2020-05-01 v1.4.0
 * 支持多小程序消息，**注意：** yml 配置 key 由 dream.weixin.wxa-config 改为 dream.weixin.wxa-configs。
 * 支持自定义公众号和小程序配置加载，可用于从数据库等加载配置。
