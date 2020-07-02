@@ -3,7 +3,7 @@ version = VERSION
 
 ext {
     javaVersion = JavaVersion.VERSION_1_8
-    springBootVersion = "2.2.6.RELEASE"
+    springBootVersion = "2.3.1.RELEASE"
     jfinalVersion = "4.9"
     jfinalWeixinVersion = "2.6"
     okhttpVersion = "3.14.9"

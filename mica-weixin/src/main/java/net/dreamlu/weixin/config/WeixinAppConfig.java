@@ -81,7 +81,7 @@ public class WeixinAppConfig implements SmartInitializingSingleton {
 		if (WxaMsgParser.JSON == weixinProperties.getWxaMsgParser()) {
 			WxaConfigKit.useJsonMsgParser();
 		}
-		if ("jackson".equals(weixinProperties.getJsonType())) {
+		if ("jackson".equalsIgnoreCase(weixinProperties.getJsonType())) {
 			JsonUtils.setJsonFactory(JacksonFactory.me());
 		}
 	}
