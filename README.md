@@ -1,7 +1,7 @@
 ## 说明
 jfinal weixin 的 spring boot starter，这个starter是为了方便boot用户使用。
 
-具体demo请查看：`spring-boot-weixin-demo` 和 [JFinal-weixin文档](https://gitee.com/jfinal/jfinal-weixin/wikis/pages?title=Home)
+具体demo请查看：`mica-weixin-demo` 和 [JFinal-weixin文档](https://gitee.com/jfinal/jfinal-weixin/wikis/pages?title=Home)
 
 ## 开源推荐
 - Spring boot 微服务，高效开发之 mica 工具集：https://gitee.com/596392912/mica
@@ -14,8 +14,8 @@ jfinal weixin 的 spring boot starter，这个starter是为了方便boot用户�
 ```xml
 <dependency>
     <groupId>net.dreamlu</groupId>
-    <artifactId>spring-boot-starter-weixin</artifactId>
-    <version>1.4.0</version>
+    <artifactId>mica-weixin</artifactId>
+    <version>2.0.0</version>
 </dependency>
 ```
 
