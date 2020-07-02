@@ -29,9 +29,9 @@ public class DreamWeixinProperties {
 	 */
 	private boolean devMode = false;
 	/**
-	 * Spring cache name，需要开启spring cache，默认：dreamWeixinCache
+	 * Spring cache name，需要开启spring cache，默认：dreamWeixinCache#7100s
 	 */
-	private String accessTokenCache = "dreamWeixinCache";
+	private String accessTokenCache = "dreamWeixinCache#7100s";
 	/**
 	 * 多公众号url挂参，默认：appId
 	 */

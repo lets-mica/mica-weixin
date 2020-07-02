@@ -37,7 +37,7 @@ jfinal weixin 的 spring boot starter，这个starter是为了方便boot用户�
 ### 配置
 | 配置项 | 默认值 | 说明 |
 | ----- | ------ | ------ |
-| dream.weixin.access-token-cache | dreamWeixinCache | 缓存名，需要开启spring cache |
+| dream.weixin.access-token-cache | dreamWeixinCache#7100s | 缓存名，需要开启spring cache |
 | dream.weixin.app-id-key | appId | 多公众号参数名，如：/weixin/wx?appId=xxx |
 | dream.weixin.dev-mode | false | 开发模式 |
 | dream.weixin.url-patterns | /weixin/* | weixin 消息处理spring拦截器url前缀 |
@@ -68,6 +68,8 @@ dream:
 ## 更新说明
 ### 2020-07-05 v2.0.0
 - 改名为 mica-weixin，提升 mica 品牌。
+- 内置 @EnableCaching。
+- 更改缓存名为 `dreamWeixinCache#7100s`，方便和 `mica-redis` 一起使用。
 - 升级 jfinal、jfinal-weixin 版本。
 
 ### 2020-05-01 v1.4.0
