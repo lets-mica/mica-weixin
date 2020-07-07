@@ -11,7 +11,8 @@ ext {
     lombokVersion = "1.18.12"
 }
 
-java {
+allprojects {
+    apply plugin: 'java'
     sourceCompatibility = javaVersion
     targetCompatibility = javaVersion
 }
