@@ -143,9 +143,9 @@ public class MsgInterceptor extends HandlerInterceptorAdapter {
 	}
 
 	@Override
-	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-		super.afterCompletion(request, response, handler, ex);
+	public void afterConcurrentHandlingStarted(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 		ApiConfigKit.removeThreadLocalAppId();
 		WxaConfigKit.removeThreadLocalAppId();
 	}
+
 }
