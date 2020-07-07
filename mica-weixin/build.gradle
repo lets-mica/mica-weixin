@@ -11,6 +11,11 @@ ext {
     lombokVersion = "1.18.12"
 }
 
+java {
+    sourceCompatibility = javaVersion
+    targetCompatibility = javaVersion
+}
+
 repositories {
     mavenLocal()
     maven { url "http://maven.aliyun.com/nexus/content/groups/public" }
