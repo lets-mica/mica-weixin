@@ -15,7 +15,7 @@ jfinal weixin 的 spring boot starter，这个starter是为了方便boot用户�
 <dependency>
     <groupId>net.dreamlu</groupId>
     <artifactId>mica-weixin</artifactId>
-    <version>2.0.0</version>
+    <version>2.0.1</version>
 </dependency>
 ```
 
@@ -66,6 +66,9 @@ dream:
 - `access-token-cache`建议配置有效时间7100秒。
 
 ## 更新说明
+### 2020-07-07 2.0.1
+- 修复 java 编译版本，采用 java8。
+
 ### 2020-07-05 v2.0.0
 - 改名为 mica-weixin，提升 mica 品牌。
 - 内置 @EnableCaching。
