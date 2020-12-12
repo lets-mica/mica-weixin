@@ -1,5 +1,8 @@
 package net.dreamlu.weixin.config;
 
+import com.jfinal.weixin.sdk.api.ApiConfig;
+import com.jfinal.wxaapp.WxaConfig;
+
 import java.util.Collections;
 import java.util.List;
 
@@ -16,7 +19,7 @@ public interface WxConfigLoader {
 	 *
 	 * @return 微信配置列表
 	 */
-	default List<WxConf> loadWx() {
+	default List<ApiConfig> loadWx() {
 		return Collections.emptyList();
 	}
 
@@ -25,7 +28,7 @@ public interface WxConfigLoader {
 	 *
 	 * @return 小程序配置列表
 	 */
-	default List<WxaConf> loadWxa() {
+	default List<WxaConfig> loadWxa() {
 		return Collections.emptyList();
 	}
 

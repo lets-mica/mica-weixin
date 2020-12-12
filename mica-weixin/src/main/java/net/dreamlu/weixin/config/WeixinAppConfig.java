@@ -25,22 +25,16 @@ import java.util.List;
 @Configuration
 @RequiredArgsConstructor
 public class WeixinAppConfig implements SmartInitializingSingleton {
-	private final DreamWeixinProperties weixinProperties;
+	private final DreamWeixinProperties weiXinProperties;
 	private final SpringAccessTokenCache accessTokenCache;
 	private final ObjectProvider<WxConfigLoader> provider;
 
 	@Override
 	public void afterSingletonsInstantiated() {
-		boolean isdev = weixinProperties.isDevMode();
-		ApiConfigKit.setDevMode(isdev);
+		boolean isDev = weiXinProperties.isDevMode();
+		ApiConfigKit.setDevMode(isDev);
 		ApiConfigKit.setAccessTokenCache(accessTokenCache);
-		WxConfigLoader configLoader = provider.getIfAvailable();
-		// 兼容老板 spring boot
-		if (configLoader == null) {
-			configLoader = WxConfigLoader.DEFAULT;
-		}
-		List<WxConf> wxConfList = new ArrayList<>(weixinProperties.getWxConfigs());
-		wxConfList.addAll(configLoader.loadWx());
+		List<WxConf> wxConfList = new ArrayList<>(weiXinProperties.getWxConfigs());
 		for (WxConf conf : wxConfList) {
 			ApiConfig config = new ApiConfig();
 			if (StrKit.notBlank(conf.getAppId())) {
@@ -58,8 +52,7 @@ public class WeixinAppConfig implements SmartInitializingSingleton {
 			config.setEncryptMessage(conf.isMessageEncrypt());
 			ApiConfigKit.putApiConfig(config);
 		}
-		List<WxaConf> wxaConfList = new ArrayList<>(weixinProperties.getWxaConfigs());
-		wxaConfList.addAll(configLoader.loadWxa());
+		List<WxaConf> wxaConfList = new ArrayList<>(weiXinProperties.getWxaConfigs());
 		for (WxaConf conf : wxaConfList) {
 			WxaConfig config = new WxaConfig();
 			if (StrKit.notBlank(conf.getAppId())) {
@@ -77,12 +70,30 @@ public class WeixinAppConfig implements SmartInitializingSingleton {
 			config.setMessageEncrypt(conf.isMessageEncrypt());
 			WxaConfigKit.setWxaConfig(config);
 		}
-		WxaConfigKit.setDevMode(isdev);
-		if (WxaMsgParser.JSON == weixinProperties.getWxaMsgParser()) {
+		WxaConfigKit.setDevMode(isDev);
+		if (WxaMsgParser.JSON == weiXinProperties.getWxaMsgParser()) {
 			WxaConfigKit.useJsonMsgParser();
 		}
-		if ("jackson".equalsIgnoreCase(weixinProperties.getJsonType())) {
+		if ("jackson".equalsIgnoreCase(weiXinProperties.getJsonType())) {
 			JsonUtils.setJsonFactory(JacksonFactory.me());
+		}
+		// 自定义的加载器
+		WxConfigLoader configLoader = provider.getIfAvailable();
+		// 兼容老板 spring boot
+		if (configLoader == null) {
+			configLoader = WxConfigLoader.DEFAULT;
+		}
+		List<ApiConfig> apiConfigList = configLoader.loadWx();
+		if (apiConfigList != null && !apiConfigList.isEmpty()) {
+			for (ApiConfig config : apiConfigList) {
+				ApiConfigKit.putApiConfig(config);
+			}
+		}
+		List<WxaConfig> wxaConfigList = configLoader.loadWxa();
+		if (wxaConfigList != null && !wxaConfigList.isEmpty()) {
+			for (WxaConfig config : wxaConfigList) {
+				WxaConfigKit.setWxaConfig(config);
+			}
 		}
 	}
 
