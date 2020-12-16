@@ -1,8 +1,8 @@
 package com.example.demo;
 
-import net.dreamlu.weixin.config.WxConf;
+import com.jfinal.weixin.sdk.api.ApiConfig;
+import com.jfinal.wxaapp.WxaConfig;
 import net.dreamlu.weixin.config.WxConfigLoader;
-import net.dreamlu.weixin.config.WxaConf;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.Collections;
@@ -17,8 +17,8 @@ import java.util.List;
 public class WxConfigDatabaseLoader implements WxConfigLoader {
 
 	@Override
-	public List<WxConf> loadWx() {
-		WxConf wxConf = new WxConf();
+	public List<ApiConfig> loadWx() {
+		ApiConfig wxConf = new ApiConfig();
 		wxConf.setAppId("wxc03edcd008ad1e70");
 		wxConf.setAppSecret("11ed9e2b8e3e3c131e7be320a42b2b5a");
 		wxConf.setToken("123456");
@@ -26,7 +26,7 @@ public class WxConfigDatabaseLoader implements WxConfigLoader {
 	}
 
 	@Override
-	public List<WxaConf> loadWxa() {
+	public List<WxaConfig> loadWxa() {
 		return Collections.emptyList();
 	}
 }
