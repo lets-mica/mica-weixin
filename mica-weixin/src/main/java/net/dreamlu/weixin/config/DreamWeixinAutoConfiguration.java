@@ -24,7 +24,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 public class DreamWeixinAutoConfiguration {
 
 	@Bean
-	public SpringAccessTokenCache springAccessTokenCache(CacheManager cacheManager, DreamWeixinProperties properties) {
+	public SpringAccessTokenCache springAccessTokenCache(CacheManager cacheManager,
+														 DreamWeixinProperties properties) {
 		Cache cache = cacheManager.getCache(properties.getAccessTokenCache());
 		return new SpringAccessTokenCache(cache);
 	}

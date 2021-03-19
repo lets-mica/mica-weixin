@@ -128,12 +128,6 @@ public abstract class MsgController {
 			processInEqubindEvent((InEqubindEvent) msg);
 		else if (msg instanceof InEquDataMsg)
 			processInEquDataMsg((InEquDataMsg) msg);
-			//===================微信智能硬件========================//
-		else if (msg instanceof InEqubindEvent)
-			processInEqubindEvent((InEqubindEvent) msg);
-		else if (msg instanceof InEquDataMsg)
-			processInEquDataMsg((InEquDataMsg) msg);
-			//===================微信智能硬件========================//
 		else if (msg instanceof InNotDefinedEvent) {
 			logger.error("未能识别的事件类型。 消息 xml 内容为：\n" + imXmlMsg);
 			processIsNotDefinedEvent((InNotDefinedEvent) msg);
