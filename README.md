@@ -12,6 +12,9 @@ jfinal weixin 的 spring boot starter，这个starter是为了方便boot用户�
 - `SpringBlade` 完整的线上解决方案（企业开发必备）：[https://gitee.com/smallc/SpringBlade](https://gitee.com/smallc/SpringBlade)
 - `IJPay` 支付SDK让支付触手可及：[https://gitee.com/javen205/IJPay](https://gitee.com/javen205/IJPay)
 
+## 兼容性
+支持 Spring boot 1.x 和 2.x
+
 ## Jar包依赖（最新）
 ```xml
 <dependency>
