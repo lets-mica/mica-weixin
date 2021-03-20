@@ -1,4 +1,6 @@
 ## 说明
+[![Mica Maven release](https://img.shields.io/nexus/r/https/oss.sonatype.org/net.dreamlu/mica-weixin.svg?style=flat-square)](https://mvnrepository.com/artifact/net.dreamlu/mica-weixin)
+
 jfinal weixin 的 spring boot starter，这个starter是为了方便boot用户使用。
 
 具体demo请查看：`mica-weixin-demo` 和 [JFinal-weixin文档](https://gitee.com/jfinal/jfinal-weixin/wikis/pages?title=Home)
