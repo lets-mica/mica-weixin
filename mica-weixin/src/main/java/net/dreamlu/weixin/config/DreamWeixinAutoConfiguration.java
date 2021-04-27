@@ -5,7 +5,6 @@ import net.dreamlu.weixin.cache.SpringAccessTokenCache;
 import net.dreamlu.weixin.properties.DreamWeixinProperties;
 import net.dreamlu.weixin.spring.MsgInterceptor;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
@@ -26,8 +25,7 @@ public class DreamWeixinAutoConfiguration {
 	@Bean
 	public SpringAccessTokenCache springAccessTokenCache(CacheManager cacheManager,
 														 DreamWeixinProperties properties) {
-		Cache cache = cacheManager.getCache(properties.getAccessTokenCache());
-		return new SpringAccessTokenCache(cache);
+		return new SpringAccessTokenCache(cacheManager, properties);
 	}
 
 	@Configuration

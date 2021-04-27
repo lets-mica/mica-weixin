@@ -20,7 +20,7 @@ jfinal weixin 的 spring boot starter，这个starter是为了方便boot用户�
 <dependency>
     <groupId>net.dreamlu</groupId>
     <artifactId>mica-weixin</artifactId>
-    <version>2.0.6</version>
+    <version>2.1.0</version>
 </dependency>
 ```
 
@@ -38,6 +38,9 @@ jfinal weixin 的 spring boot starter，这个starter是为了方便boot用户�
 
 ### Api
 - 类添加`@WxApi`，注解value为你的消息地址，使用/weixin/api，已经组合[@RequestMapping和@Controller]
+
+### access token cache
+您可以配置 [mica-caffeine](https://gitee.com/596392912/mica/tree/master/mica-caffeine) 或 [mica-redis](https://gitee.com/596392912/mica/tree/master/mica-redis) 实现 access token 的缓存。
 
 ### 配置
 | 配置项 | 默认值 | 说明 |
@@ -71,7 +74,11 @@ dream:
 - `access-token-cache`建议配置有效时间7100秒。
 
 ## 更新说明
-### 2020-12-16 2.0.6
+### 2021-04-27 2.1.0
+- Spring cache 对象改为每次读取， caffeine 会刷新，照成引用为 null。
+- 升级 jfinal-weixin 到 3.1。
+
+### 2020-03-20 2.0.6
 - 升级 jfinal-weixin 到 3.0。
 
 ### 2020-12-16 2.0.5
