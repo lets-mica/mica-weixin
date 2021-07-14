@@ -4,10 +4,10 @@ version = VERSION
 ext {
     javaVersion = JavaVersion.VERSION_1_8
     springBootVersion = "2.4.4"
-    jfinalVersion = "4.9.08"
-    jfinalWeixinVersion = "3.1"
+    jfinalVersion = "4.9.15"
+    jfinalWeixinVersion = "3.2"
     okhttpVersion = "3.14.9"
-    micaAutoVersion = "2.0.4"
+    micaAutoVersion = "2.1.1"
     lombokVersion = "1.18.20"
 }
 
