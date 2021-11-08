@@ -73,6 +73,37 @@ dream:
 
 - `access-token-cache`建议配置有效时间7100秒。
 
+
+### 自定义公众号vs小程序配置
+注意：实现 `WxConfigLoader` 即可，可以从数据库中获取。
+
+```java
+/**
+ * 微信配置加载器，用于自定义实现
+ *
+ * @author L.cm
+ */
+@Configuration
+public class WxConfigDatabaseLoader implements WxConfigLoader {
+
+	@Override
+	public List<ApiConfig> loadWx() {
+		// 公众号
+		ApiConfig wxConf = new ApiConfig();
+		wxConf.setAppId("wxc03edcd008ad1e70");
+		wxConf.setAppSecret("11ed9e2b8e3e3c131e7be320a42b2b5a");
+		wxConf.setToken("123456");
+		return Collections.singletonList(wxConf);
+	}
+
+	@Override
+	public List<WxaConfig> loadWxa() {
+		// 小程序
+		return Collections.emptyList();
+	}
+}
+```
+
 ## 更新说明
 ### 2021-07-14 2.1.1
 - 升级 jfinal-weixin 到 3.2。
