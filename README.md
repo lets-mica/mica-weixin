@@ -20,7 +20,7 @@ jfinal weixin 的 spring boot starter，这个starter是为了方便boot用户�
 <dependency>
     <groupId>net.dreamlu</groupId>
     <artifactId>mica-weixin</artifactId>
-    <version>2.1.1</version>
+    <version>2.1.2</version>
 </dependency>
 ```
 
@@ -105,6 +105,12 @@ public class WxConfigDatabaseLoader implements WxConfigLoader {
 ```
 
 ## 更新说明
+### 2021-11-22 2.1.2
+- 微调，兼容更多版本，测试 Spring boot 2.6.0 兼容性。
+- 升级 jfinal 到 4.9.17。
+- 升级 jfinal-weixin 到 3.4。
+- 升级 lombok 到 1.18.22。
+
 ### 2021-07-14 2.1.1
 - 升级 jfinal-weixin 到 3.2。
 
