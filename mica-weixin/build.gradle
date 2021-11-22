@@ -3,12 +3,12 @@ version = VERSION
 
 ext {
     javaVersion = JavaVersion.VERSION_1_8
-    springBootVersion = "2.4.4"
-    jfinalVersion = "4.9.15"
-    jfinalWeixinVersion = "3.3"
+    springBootVersion = "2.6.0"
+    jfinalVersion = "4.9.17"
+    jfinalWeixinVersion = "3.4"
     okhttpVersion = "3.14.9"
     micaAutoVersion = "2.1.3"
-    lombokVersion = "1.18.20"
+    lombokVersion = "1.18.22"
 }
 
 allprojects {
@@ -19,7 +19,7 @@ allprojects {
 
 repositories {
     mavenLocal()
-    maven { url "http://maven.aliyun.com/nexus/content/groups/public" }
+    maven { url "https://maven.aliyun.com/nexus/content/groups/public" }
     maven { url "https://repo.spring.io/libs-release" }
     maven { url "https://repo.spring.io/milestone" }
     mavenCentral()
@@ -36,5 +36,5 @@ dependencies {
     annotationProcessor "org.projectlombok:lombok:$lombokVersion"
     annotationProcessor "net.dreamlu:mica-auto:$micaAutoVersion"
     compileOnly "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
-    testCompile "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
+    testImplementation "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
 }

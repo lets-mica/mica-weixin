@@ -12,7 +12,8 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.method.HandlerMethod;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+import org.springframework.web.servlet.AsyncHandlerInterceptor;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,7 +25,7 @@ import java.util.Arrays;
  * @author L.cm
  */
 @RequiredArgsConstructor
-public class MsgInterceptor extends HandlerInterceptorAdapter {
+public class MsgInterceptor implements AsyncHandlerInterceptor {
 	private static final Log logger = LogFactory.getLog(MsgInterceptor.class);
 	private final DreamWeixinProperties weixinProperties;
 
@@ -140,6 +141,17 @@ public class MsgInterceptor extends HandlerInterceptorAdapter {
 		String tempStr = array[0] + array[1] + array[2];
 		tempStr = HashKit.sha1(tempStr);
 		return tempStr.equalsIgnoreCase(signature);
+	}
+
+	@Override
+	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+
+	}
+
+	@Override
+	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
+		ApiConfigKit.removeThreadLocalAppId();
+		WxaConfigKit.removeThreadLocalAppId();
 	}
 
 	@Override

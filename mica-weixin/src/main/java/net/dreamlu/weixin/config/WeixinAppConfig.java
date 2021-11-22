@@ -22,7 +22,7 @@ import java.util.List;
  *
  * @author L.cm
  */
-@Configuration
+@Configuration(proxyBeanMethods = false)
 @RequiredArgsConstructor
 public class WeixinAppConfig implements SmartInitializingSingleton {
 	private final DreamWeixinProperties weiXinProperties;
