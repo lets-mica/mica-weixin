@@ -15,7 +15,7 @@ import java.util.Objects;
  */
 @RequiredArgsConstructor
 public class SpringAccessTokenCache implements IAccessTokenCache {
-	private final static String ACCESS_TOKEN_PREFIX = "dream-weixin:token:";
+	private static final String ACCESS_TOKEN_PREFIX = "dream-weixin:token:";
 	private final CacheManager cacheManager;
 	private final DreamWeixinProperties properties;
 

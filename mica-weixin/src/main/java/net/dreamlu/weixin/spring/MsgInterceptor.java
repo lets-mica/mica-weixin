@@ -4,19 +4,18 @@ import com.jfinal.kit.HashKit;
 import com.jfinal.kit.StrKit;
 import com.jfinal.weixin.sdk.api.ApiConfigKit;
 import com.jfinal.wxaapp.WxaConfigKit;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import net.dreamlu.weixin.annotation.WxApi;
 import net.dreamlu.weixin.properties.DreamWeixinProperties;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.AsyncHandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.Arrays;
 
 /**
@@ -24,9 +23,9 @@ import java.util.Arrays;
  *
  * @author L.cm
  */
+@Slf4j
 @RequiredArgsConstructor
 public class MsgInterceptor implements AsyncHandlerInterceptor {
-	private static final Log logger = LogFactory.getLog(MsgInterceptor.class);
 	private final DreamWeixinProperties weixinProperties;
 
 	@Override
@@ -94,13 +93,13 @@ public class MsgInterceptor implements AsyncHandlerInterceptor {
 		String timestamp = request.getParameter("timestamp");
 		String nonce = request.getParameter("nonce");
 		if (StrKit.isBlank(signature) || StrKit.isBlank(timestamp) || StrKit.isBlank(nonce)) {
-			logger.error("check signature failure");
+			log.error("check signature failure");
 			return false;
 		}
 		if (checkSignature(token, signature, timestamp, nonce)) {
 			return true;
 		} else {
-			logger.error("check signature failure: " +
+			log.error("check signature failure: " +
 				" signature = " + signature +
 				" timestamp = " + timestamp +
 				" nonce = " + nonce);
@@ -131,7 +130,7 @@ public class MsgInterceptor implements AsyncHandlerInterceptor {
 		if (isOk && !response.isCommitted()) {
 			WebUtils.renderText(response, echostr);
 		} else {
-			logger.error("验证失败：configServer");
+			log.error("验证失败：configServer");
 		}
 	}
 

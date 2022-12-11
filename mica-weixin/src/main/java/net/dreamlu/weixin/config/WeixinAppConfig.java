@@ -12,7 +12,7 @@ import net.dreamlu.weixin.cache.SpringAccessTokenCache;
 import net.dreamlu.weixin.properties.DreamWeixinProperties;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.SmartInitializingSingleton;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.boot.autoconfigure.AutoConfiguration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +22,7 @@ import java.util.List;
  *
  * @author L.cm
  */
-@Configuration(proxyBeanMethods = false)
+@AutoConfiguration
 @RequiredArgsConstructor
 public class WeixinAppConfig implements SmartInitializingSingleton {
 	private final DreamWeixinProperties weiXinProperties;

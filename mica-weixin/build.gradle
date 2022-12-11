@@ -2,13 +2,13 @@ group = GROUPID
 version = VERSION
 
 ext {
-    javaVersion = JavaVersion.VERSION_1_8
-    springBootVersion = "2.6.0"
-    jfinalVersion = "4.9.17"
+    javaVersion = JavaVersion.VERSION_17
+    springBootVersion = "3.0.0"
+    jfinalVersion = "5.0.8"
     jfinalWeixinVersion = "3.4"
     okhttpVersion = "3.14.9"
-    micaAutoVersion = "2.1.3"
-    lombokVersion = "1.18.22"
+    micaAutoVersion = "3.0.0"
+    lombokVersion = "1.18.24"
 }
 
 allprojects {
@@ -19,7 +19,6 @@ allprojects {
 
 repositories {
     mavenLocal()
-    maven { url "https://maven.aliyun.com/nexus/content/groups/public" }
     maven { url "https://repo.spring.io/libs-release" }
     maven { url "https://repo.spring.io/milestone" }
     mavenCentral()

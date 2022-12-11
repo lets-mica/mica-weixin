@@ -1,9 +1,10 @@
 package net.dreamlu.weixin.spring;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -12,8 +13,8 @@ import java.io.PrintWriter;
  *
  * @author L.cm
  */
+@Slf4j
 class WebUtils {
-	private static final Log logger = LogFactory.getLog(WebUtils.class);
 
 	/**
 	 * 返回json
@@ -27,7 +28,7 @@ class WebUtils {
 		try (PrintWriter out = response.getWriter()) {
 			out.append(text);
 		} catch (IOException e) {
-			logger.error(e.getMessage(), e);
+			log.error(e.getMessage(), e);
 		}
 	}
 }

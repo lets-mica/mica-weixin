@@ -8,22 +8,20 @@ import com.jfinal.wxaapp.msg.bean.WxaImageMsg;
 import com.jfinal.wxaapp.msg.bean.WxaMsg;
 import com.jfinal.wxaapp.msg.bean.WxaTextMsg;
 import com.jfinal.wxaapp.msg.bean.WxaUserEnterSessionMsg;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 /**
  * 小程序消息控制器
  *
  * @author L.cm
  */
+@Slf4j
 public abstract class DreamWxaMsgController {
-	private static final Log logger = LogFactory.getLog(DreamWxaMsgController.class);
 	@Autowired
 	protected HttpServletRequest request;
 	@Autowired
@@ -61,7 +59,7 @@ public abstract class DreamWxaMsgController {
 		} else if (wxaMsg instanceof WxaUserEnterSessionMsg) {
 			processUserEnterSessionMsg((WxaUserEnterSessionMsg) wxaMsg);
 		} else {
-			logger.error("未能识别的小程序消息类型。 消息内容为：\n" + imXmlMsg);
+			log.error("未能识别的小程序消息类型。 消息内容为：\n" + imXmlMsg);
 		}
 		// 直接回复success（推荐方式）
 		WebUtils.renderText(response, "success");

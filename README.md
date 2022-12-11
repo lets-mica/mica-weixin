@@ -13,14 +13,19 @@ jfinal weixin 的 spring boot starter，这个starter是为了方便boot用户�
 - `IJPay` 支付SDK让支付触手可及：[https://gitee.com/javen205/IJPay](https://gitee.com/javen205/IJPay)
 
 ## 兼容性
-支持 Spring boot 1.x 和 2.x
+
+## 版本说明
+| version   | spring boot version | java version |
+|-------|----------------|--------------|
+| 3.0.0   | 3.x            | 17           |
+| 2.1.2 | 1.x ~ 2.x      | 1.8          |
 
 ## Jar包依赖（最新）
 ```xml
 <dependency>
     <groupId>net.dreamlu</groupId>
     <artifactId>mica-weixin</artifactId>
-    <version>2.1.2</version>
+    <version>3.0.0</version>
 </dependency>
 ```
 
@@ -105,6 +110,14 @@ public class WxConfigDatabaseLoader implements WxConfigLoader {
 ```
 
 ## 更新说明
+
+### 2022-12-11 3.0.0
+- 升级 java 到 java17。
+- 升级 Spring boot 到 3.x。
+- 升级 jfinal 到 5.0.8。
+- 升级 lombok 到 1.18.24。
+
+
 ### 2021-11-22 2.1.2
 - 微调，兼容更多版本，测试 Spring boot 2.6.0 兼容性。
 - 升级 jfinal 到 4.9.17。

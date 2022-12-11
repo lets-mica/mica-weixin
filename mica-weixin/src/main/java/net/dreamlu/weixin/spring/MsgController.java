@@ -1,6 +1,5 @@
 package net.dreamlu.weixin.spring;
 
-import com.jfinal.kit.HttpKit;
 import com.jfinal.kit.StrKit;
 import com.jfinal.weixin.iot.msg.InEquDataMsg;
 import com.jfinal.weixin.iot.msg.InEqubindEvent;
@@ -12,24 +11,21 @@ import com.jfinal.weixin.sdk.msg.in.card.*;
 import com.jfinal.weixin.sdk.msg.in.event.*;
 import com.jfinal.weixin.sdk.msg.in.speech_recognition.InSpeechRecognitionResults;
 import com.jfinal.weixin.sdk.msg.out.OutMsg;
-import com.jfinal.weixin.sdk.msg.out.OutTextMsg;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 /**
  * 消息控制器
  *
  * @author L.cm
  */
+@Slf4j
 public abstract class MsgController {
-	private static final Log logger = LogFactory.getLog(WebUtils.class);
 	private static final String IN_MSG_WX_CACHE_KEY = "_IN_MSG_WX_CACHE_KEY_";
 	@Autowired
 	protected HttpServletRequest request;
@@ -129,10 +125,10 @@ public abstract class MsgController {
 		else if (msg instanceof InEquDataMsg)
 			processInEquDataMsg((InEquDataMsg) msg);
 		else if (msg instanceof InNotDefinedEvent) {
-			logger.error("未能识别的事件类型。 消息 xml 内容为：\n" + imXmlMsg);
+			log.error("未能识别的事件类型。 消息 xml 内容为：\n" + imXmlMsg);
 			processIsNotDefinedEvent((InNotDefinedEvent) msg);
 		} else if (msg instanceof InNotDefinedMsg) {
-			logger.error("未能识别的消息类型。 消息 xml 内容为：\n" + imXmlMsg);
+			log.error("未能识别的消息类型。 消息 xml 内容为：\n" + imXmlMsg);
 			processIsNotDefinedMsg((InNotDefinedMsg) msg);
 		}
 		return ResponseEntity.ok().build();
@@ -159,33 +155,6 @@ public abstract class MsgController {
 				request.getParameter("nonce"));
 		}
 		WebUtils.renderText(response, outMsgXml);
-	}
-
-	/**
-	 * 消息输出
-	 *
-	 * @param content 输出的消息
-	 */
-	public void renderOutTextMsg(String content) {
-		InMsg inMsg = (InMsg) request.getAttribute(IN_MSG_WX_CACHE_KEY);
-		OutTextMsg outMsg = new OutTextMsg(inMsg);
-		outMsg.setContent(content);
-		render(outMsg);
-	}
-
-	public String getInMsgXml(HttpServletRequest request) {
-		String inMsgXml = HttpKit.readData(request);
-		// 是否需要解密消息
-		if (ApiConfigKit.getApiConfig().isEncryptMessage()) {
-			inMsgXml = MsgEncryptKit.decrypt(inMsgXml,
-				request.getParameter("timestamp"),
-				request.getParameter("nonce"),
-				request.getParameter("msg_signature"));
-		}
-		if (StrKit.isBlank(inMsgXml)) {
-			throw new RuntimeException("请不要在浏览器中请求该连接,调试请查看WIKI:http://git.oschina.net/jfinal/jfinal-weixin/wikis/JFinal-weixin-demo%E5%92%8C%E8%B0%83%E8%AF%95");
-		}
-		return inMsgXml;
 	}
 
 	/**
